@@ -1,0 +1,256 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+* {
+  margin: 0; padding: 0; box-sizing: border-box;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body {
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+    url('https://wallpaperaccess.com/full/333672.jpg') no-repeat center center/cover;
+  color: #e0e0e0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  user-select: none;
+}
+
+.app-container {
+  background: transparent;
+  backdrop-filter: blur(8px);
+  border-radius: 16px;
+  box-shadow:
+    0 0 30px rgba(0, 0, 0, 0.9),
+    inset 0 0 1px rgba(255, 255, 255, 0.05);
+  max-width: 500px;
+  width: 100%;
+  padding: 40px 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: box-shadow 0.3s ease;
+}
+
+h1 {
+  font-weight: 700;
+  font-size: 2.25rem;
+  margin-bottom: 30px;
+  color: #f0f0f0;
+  letter-spacing: 0.03em;
+  text-align: center;
+  user-select: none;
+}
+
+.converter-card {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.input-group {
+  position: relative;
+  width: 100%;
+}
+
+input[type=number] {
+  width: 100%;
+  padding: 25px 18px 16px 18px;
+  font-size: 1.1rem;
+  border-radius: 10px;
+  border: 1.8px solid #444;
+  background-color: #2a2a2a;
+  color: #e0e0e0;
+  outline-offset: 2px;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+input[type=number]:focus + label,
+input[type=number]:valid + label {
+  top: 8px;
+  left: 14px;
+  font-size: 0.8rem;
+  color: #4a90e2;
+  padding: 0 6px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  pointer-events: none;
+  user-select: none;
+  position: absolute;
+  transition: all 0.3s ease;
+}
+
+input[type=number]:focus {
+  border-color: #4a90e2;
+  background-color: #383838;
+}
+
+label {
+  position: absolute;
+  top: 16px;
+  left: 18px;
+  color: #888;
+  font-size: 1rem;
+  pointer-events: none;
+  user-select: none;
+  transition: all 0.3s ease;
+  background-color: transparent;
+}
+
+.currency-selectors {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  align-items: center;
+  position: relative; /* Helps prevent dropdown overflow issues */
+  z-index: 10;        /* Higher z-index so dropdowns overlay properly */
+}
+
+.currency-dropdown {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background-color: #2b2b2b;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1.8px solid #444;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+  position: relative; /* To position flags and dropdown correctly */
+  cursor: pointer;
+}
+
+.currency-dropdown:hover {
+  background-color: #383838;
+  border-color: #4a90e2;
+}
+
+.currency-dropdown select {
+  flex-grow: 1;
+  background-color: transparent;
+  border: none;
+  color: #3d3d3d;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  appearance: none;
+  outline: none;
+  user-select: none;
+  padding: 6px 6px;
+  
+}
+
+.flag {
+  width: 36px;
+  height: 24px;
+  border-radius: 5px;
+  object-fit: cover;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+  user-select: none;
+}
+
+/* Add a custom arrow for select (optional) */
+.currency-dropdown select::-ms-expand {
+  display: none; /* IE10+ remove default arrow */
+}
+
+.currency-dropdown::after {
+  content: '';
+  position: absolute;
+  right: 16px;
+  pointer-events: none;
+  top: 50%;
+  transform: translateY(-50%);
+  border-style: solid;
+  border-width: 6px 5px 0 5px;
+  border-color: #e0e0e0 transparent transparent transparent;
+  user-select: none;
+}
+
+.switch-button {
+  cursor: pointer;
+  font-size: 1.8rem;
+  padding: 9px 18px;
+  border-radius: 50%;
+  background-color: #4a90e2;
+  color: #fff;
+  border: none;
+  box-shadow: 0 6px 14px rgba(74, 144, 226, 0.6);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  user-select: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.switch-button:hover {
+  background-color: #346ac0;
+  box-shadow: 0 8px 20px rgba(52, 106, 192, 0.8);
+  transform: rotate(180deg);
+}
+
+button#convert-btn {
+  width: 100%;
+  background-color: #4a90e2;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.25rem;
+  padding: 16px 0;
+  border-radius: 14px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 10px 28px rgba(74, 144, 226, 0.8);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  user-select: none;
+}
+
+button#convert-btn:hover {
+  background-color: #346ac0;
+  box-shadow: 0 12px 34px rgba(52, 106, 192, 1);
+}
+
+.result {
+  font-size: 1.3rem;
+  padding: 20px 22px;
+  border-radius: 14px;
+  background-color: #2b2b2b;
+  border: 1.8px solid #444;
+  color: #cfd8f7;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-align: center;
+
+  /* Fixes for size and alignment */
+  min-height: 62px;
+  max-height: 62px;
+  line-height: 1.4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  word-break: break-word;
+  user-select: text;
+  box-shadow: inset 0 0 10px rgba(74, 144, 226, 0.3);
+  transition: background-color 0.3s ease;
+}
+
+.result.error {
+  background-color: #5b2a2a;
+  border-color: #a63838;
+  color: #ff6b6b;
+  box-shadow: inset 0 0 10px rgba(255, 107, 107, 0.5);
+}
+
+@media (max-width: 480px) {
+  .currency-selectors {
+    flex-direction: column;
+  }
+  .switch-button {
+    align-self: center;
+    margin: 12px 0;
+  }
+}
+
